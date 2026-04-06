@@ -10,6 +10,24 @@ public class Ksiazka {
         this.liczbaStron = liczbaStron;
         this.dostepna = dostepna;
     }
+    public String getTytul() {
+        return tytul;
+    }
+
+    // getter autora
+    public String getAutor() {
+        return autor;
+    }
+
+    // getter liczby stron
+    public int getLiczbaStron() {
+        return liczbaStron;
+    }
+
+    // getter dostępności
+    public boolean isDostepna() {
+        return dostepna;
+    }
 
     public void wypiszInfo() {
         System.out.println("Tytuł: " + tytul);

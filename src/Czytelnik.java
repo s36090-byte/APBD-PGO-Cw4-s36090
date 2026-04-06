@@ -24,14 +24,14 @@ public class Czytelnik {
     // zwiększanie liczby wypożyczeń
     public void zwiekszLiczbeWypozyczen() {
         liczbaWypozyczen++;
-        System.out.println(imie + " wypożyczył książkę.");
+        System.out.println(imie + " wypożyczył/a książkę.");
     }
 
     // zmniejszanie liczby wypożyczeń
     public void zmniejszLiczbeWypozyczen() {
         if (liczbaWypozyczen > 0) {
             liczbaWypozyczen--;
-            System.out.println(imie + " zwrócił książkę.");
+            System.out.println(imie + " zwrócił/a książkę.");
         } else {
             System.out.println("Brak wypożyczeń do zmniejszenia.");
         }
