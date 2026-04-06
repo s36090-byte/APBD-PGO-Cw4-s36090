@@ -28,6 +28,9 @@ public class Ksiazka {
     public boolean isDostepna() {
         return dostepna;
     }
+    public void setDostepna(boolean dostepna) {
+        this.dostepna = dostepna;
+    }
 
     public void wypiszInfo() {
         System.out.println("Tytuł: " + tytul);

@@ -1,49 +1,37 @@
 public class Main {
   public static void main(String[] args) {
 
+    // Tworzymy książki
     Ksiazka k1 = new Ksiazka("Wiedźmin", "Sapkowski", 300, true);
-    Ksiazka k2 = new Ksiazka("Pan Tadeusz", "Mickiewicz", 200, true);
-    Ksiazka k3 = new Ksiazka("Lalka", "Prus", 400, false);
+    Ksiazka k2 = new Ksiazka("Lalka", "Prus", 400, true);
+    Ksiazka k3 = new Ksiazka("Harry Potter", "Rowling", 350, true);
 
-    Biblioteka biblioteka = new Biblioteka(5);
+    // Tworzymy czytelników
+    Czytelnik c1 = new Czytelnik("Jan", "Kowalski", "123", 0);
+    Czytelnik c2 = new Czytelnik("Anna", "Nowak", "456", 0);
 
+    // Tworzymy bibliotekę
+    Biblioteka biblioteka = new Biblioteka(10);
+
+    // Dodajemy książki
     biblioteka.dodajKsiazke(k1);
     biblioteka.dodajKsiazke(k2);
     biblioteka.dodajKsiazke(k3);
 
+    // Wyświetlamy dostępne książki
     biblioteka.wypiszDostepneKsiazki();
 
-    Ksiazka szukana = biblioteka.znajdzKsiazkePoTytule("Lalka");
-    if (szukana != null) {
-      System.out.println("Znaleziono książkę: " + szukana.getTytul());
-    }
+    // Wypożyczenie książki
+    biblioteka.wypozyczKsiazke("Wiedźmin", c1);
+    biblioteka.wypozyczKsiazke("Lalka", c2);
 
-    System.out.println("Liczba dostępnych książek: " + biblioteka.policzDostepneKsiazki());
+    // Ponowne wypisanie dostępnych książek
+    biblioteka.wypiszDostepneKsiazki();
 
-    k1.wypiszInfo();
-    // czytelnicy
-    Czytelnik c1 = new Czytelnik("Jan", "Kowalski", "123", 0);
-    Czytelnik c2 = new Czytelnik("Anna", "Nowak", "456", 2);
+    // Zwrot książki
+    biblioteka.zwrocKsiazke("Wiedźmin", c1);
 
-    // test metod
-    c1.wypiszDane();
-    c2.wypiszDane();
-
-    c1.zwiekszLiczbeWypozyczen();
-    c1.zwiekszLiczbeWypozyczen();
-
-    c2.zmniejszLiczbeWypozyczen();
-
-    // sprawdzenie po zmianach
-    c1.wypiszDane();
-    c2.wypiszDane();
-    k2.wypiszInfo();
-    k3.wypiszInfo();
-
-    k1.wypozycz();
-    k1.wypozycz(); // sprawdzenie co się stanie
-
-    k1.zwroc();
-    k1.wypiszInfo();
+    // Ostateczne wypisanie dostępnych książek
+    biblioteka.wypiszDostepneKsiazki();
   }
 }

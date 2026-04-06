@@ -11,6 +11,13 @@ public class Czytelnik {
         this.numerKarty = numerKarty;
         this.liczbaWypozyczen = liczbaWypozyczen;
     }
+    public String getImie() {
+        return imie;
+    }
+
+    public String getNazwisko() {
+        return nazwisko;
+    }
 
     // wypisanie danych
     public void wypiszDane() {

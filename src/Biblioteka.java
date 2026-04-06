@@ -50,4 +50,29 @@ public class Biblioteka {
         }
         return licznik;
     }
+    public void wypozyczKsiazke(String tytul, Czytelnik czytelnik) {
+        Ksiazka ksiazka = znajdzKsiazkePoTytule(tytul);
+        if (ksiazka != null && ksiazka.isDostepna()) {
+            ksiazka.setDostepna(false);  // ustaw książkę jako niedostępną
+            czytelnik.zwiekszLiczbeWypozyczen();
+            System.out.println(czytelnik.getImie() + " wypożyczył(a) książkę: " + tytul);
+        } else if (ksiazka != null) {
+            System.out.println("Książka " + tytul + " jest już wypożyczona.");
+        } else {
+            System.out.println("Nie znaleziono książki o tytule: " + tytul);
+        }
+    }
+    public void zwrocKsiazke(String tytul, Czytelnik czytelnik) {
+        Ksiazka ksiazka = znajdzKsiazkePoTytule(tytul);
+        if (ksiazka != null && !ksiazka.isDostepna()) {
+            ksiazka.setDostepna(true);
+            czytelnik.zmniejszLiczbeWypozyczen();
+            System.out.println(czytelnik.getImie() + " zwrócił(a) książkę: " + tytul);
+        } else if (ksiazka != null) {
+            System.out.println("Książka " + tytul + " była już dostępna.");
+        } else {
+            System.out.println("Nie znaleziono książki o tytule: " + tytul);
+        }
+    }
+
 }
