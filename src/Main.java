@@ -1,37 +1,31 @@
 public class Main {
-  public static void main(String[] args) {
+    public static void main(String[] args) {
+        zespolprojektowy zespol = new zespolprojektowy("Aplikacja mobilna E-Commerce");
 
-    // Tworzymy książki
-    Ksiazka k1 = new Ksiazka("Wiedźmin", "Sapkowski", 300, true);
-    Ksiazka k2 = new Ksiazka("Lalka", "Prus", 400, true);
-    Ksiazka k3 = new Ksiazka("Harry Potter", "Rowling", 350, true);
+        Pracownik p1 = new Programista("P001", "Jan", "Kowalski", 8000, "Java", 5);
+        Pracownik t1 = new Tester("T001", "Anna", "Nowak", 6000, true, 45);
+        Pracownik t2 = new Tester("T002", "Piotr", "Wiśniewski", 5000, false, 20);
 
-    // Tworzymy czytelników
-    Czytelnik c1 = new Czytelnik("Jan", "Kowalski", "123", 0);
-    Czytelnik c2 = new Czytelnik("Anna", "Nowak", "456", 0);
+        zespol.dodajPracownika(p1);
+        zespol.dodajPracownika(t1);
+        zespol.dodajPracownika(t2);
 
-    // Tworzymy bibliotekę
-    Biblioteka biblioteka = new Biblioteka(10);
+        zespol.wypiszSkladZespolu();
+        System.out.println("\nŁączny miesięczny koszt zespołu: " + zespol.policzLacznyKoszt() + " PLN");
 
-    // Dodajemy książki
-    biblioteka.dodajKsiazke(k1);
-    biblioteka.dodajKsiazke(k2);
-    biblioteka.dodajKsiazke(k3);
+        zespol.wypiszTesterowAutomatyzujacych();
 
-    // Wyświetlamy dostępne książki
-    biblioteka.wypiszDostepneKsiazki();
+        System.out.println("\n--- Wywołanie metod specyficznych (Rzutowanie) ---");
+        Pracownik znaleziony = zespol.znajdzPoId("P001");
+        if (znaleziony instanceof Programista) {
+            Programista dev = (Programista) znaleziony;
+            dev.wypiszTechnologie(); // Metoda niedostępna bezpośrednio z poziomu klasy Pracownik
+        }
 
-    // Wypożyczenie książki
-    biblioteka.wypozyczKsiazke("Wiedźmin", c1);
-    biblioteka.wypozyczKsiazke("Lalka", c2);
+        System.out.println("\n--- Test metody equals() ---");
+        Pracownik klonPracownika = new Pracownik("P001", "InneImie", "InneNazwisko", 0);
 
-    // Ponowne wypisanie dostępnych książek
-    biblioteka.wypiszDostepneKsiazki();
-
-    // Zwrot książki
-    biblioteka.zwrocKsiazke("Wiedźmin", c1);
-
-    // Ostateczne wypisanie dostępnych książek
-    biblioteka.wypiszDostepneKsiazki();
-  }
+        System.out.println("Czy p1 jest taki sam jak klonPracownika (to samo ID)? " + p1.equals(klonPracownika));
+        System.out.println("Czy p1 jest taki sam jak t1? " + p1.equals(t1));
+    }
 }
